@@ -54,25 +54,42 @@ function asignadorNumeroCuenta() {
     return numeroAsignado
 }
 
+
 function registro(){
     let usuario = new Usuario()
     let usuariosBD
+    let cuentasBD
     if(localStorage.getItem("Usuario") == null){
         usuariosBD = []
-    }else{
-        usuariosBD=JSON.parse(localStorage.getItem("Usuario"))
-    }
+        }else{
+            usuariosBD=JSON.parse(localStorage.getItem("Usuario"))
+            }
+    if(localStorage.getItem("Cuenta") == null){
+        cuentasBD = []
+        }else{
+            cuentasBD=JSON.parse(localStorage.getItem("Cuenta"))
+            }
     captarDatosLogin(usuario)
-    if (validacionCorreoExiste(usuariosBD, usuario)) {
+    if(validacionCorreoExiste(usuariosBD, usuario)) {
         alert("Este correo electronico ya fue registrado.")
-    }else if (validacionCedulaExiste(usuariosBD, usuario)) {
-        alert("Este numero de identificacion ya fue registrado.")
-    }else if(!validarPasswords(usuario)){
-        alert("Las contraseñas son diferentes.")
-    }else{
-    usuariosBD.push(usuario)
-    localStorage.setItem("Usuario", JSON.stringify(usuariosBD))
-    alert("Usuario registrado exitosamente.")
-    }
+        }else if (validacionCedulaExiste(usuariosBD, usuario)) {
+                    alert("Este numero de identificacion ya fue registrado.")
+                }else if(!validarPasswords(usuario)){
+                        alert("Las contraseñas son diferentes.")
+                        }else{
+                            let cuenta = {
+                                numeroCuenta:"",
+                                saldo:"",
+                                estado:""
+                            }
+                            cuenta.numeroCuenta = usuario.numeroCuenta
+                            cuenta.saldo = 200000
+                            cuenta.estado = "Activa"
+                            cuentasBD.push(cuenta)
+                            usuariosBD.push(usuario)
+                            localStorage.setItem("Usuario", JSON.stringify(usuariosBD))
+                            localStorage.setItem("Cuenta", JSON.stringify(cuentasBD))
+                            alert("Usuario registrado exitosamente.")
+                            }
 }
 
