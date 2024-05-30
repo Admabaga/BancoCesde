@@ -10,7 +10,7 @@ class Usuario {
 }
 
 let numeroAsignado =1000000000
-function captarDatosLogin(usuario){
+function captarDatosLogin(usuario, numeroAsignado){
     usuario.id = document.getElementById('idCliente').value
     usuario.nombre = document.getElementById('nombresCliente').value
     usuario.apellido = document.getElementById('apellidosCliente').value

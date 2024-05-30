@@ -23,6 +23,17 @@ function validarUsuarioLogin(login, usuariosBD){
     }
 }
 
+function traerDatosCuenta(validadorUsuario, cuentasBD){
+    let cuentaEncontrada 
+    for (let i = 0; i < cuentasBD.length; i++) {
+        if (cuentasBD[i].numeroCuenta == validadorUsuario) {
+            cuentaEncontrada = cuentasBD.find(cuenta => cuenta.numeroCuenta == validadorUsuario)
+            return cuentaEncontrada
+        }
+    }
+
+}
+
 let validadorUsuario
 function iniciarSesion(){
     let login = new Login()
@@ -36,18 +47,8 @@ function iniciarSesion(){
         } else {
                 alert("Usuario o contraseña incorrectos.")
                 }
-
 }
 
-function traerDatosCuenta(validadorUsuario, cuentasBD){
-    let cuentaEncontrada 
-    for (let i = 0; i < cuentasBD.length; i++) {
-        if (cuentasBD[i].numeroCuenta == validadorUsuario) {
-            cuentaEncontrada = cuentasBD.find(cuenta => cuenta.numeroCuenta == validadorUsuario)
-            return cuentaEncontrada
-        }
-    }
 
-}
 
 
