@@ -102,13 +102,30 @@ function guardarHistorial(transferencia){
             }
     historialMovimientoSaliente.tipoMovimiento = "Transferencia"
     historialMovimientoSaliente.valorMovimiento = "-"+transferencia.valorTransferencia
-    historialMovimientoSaliente.fecha = new Date()
+    historialMovimientoSaliente.fecha = formatoHoraYFechaColombia()
     historialMovimientoSaliente.idCuenta = transferencia.cuentaEmisora
     historialBD.push(historialMovimientoSaliente)
     historialMovimientoEntrante.tipoMovimiento = "Transferencia"
     historialMovimientoEntrante.valorMovimiento = "+"+transferencia.valorTransferencia
-    historialMovimientoEntrante.fecha = new Date()
+    historialMovimientoEntrante.fecha = formatoHoraYFechaColombia()
     historialMovimientoEntrante.idCuenta = transferencia.cuentaReceptora
     historialBD.push(historialMovimientoEntrante)
     localStorage.setItem('Historial', JSON.stringify(historialBD))
+}
+
+function formatoHoraYFechaColombia(){
+    let fechaHoraCompletaColombia
+    let horaActualColombia = new Date().toLocaleString("es-CO", {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      })
+    let fechaActualColombia = new Date().toLocaleDateString("es-CO", {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+    })
+    fechaHoraCompletaColombia = `${horaActualColombia} ${fechaActualColombia}`;
+    return fechaHoraCompletaColombia
 }
