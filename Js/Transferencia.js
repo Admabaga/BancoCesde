@@ -83,7 +83,13 @@ function actualizarSaldosEnBd(cuentasBD, transferencia){
 
 function guardarHistorial(transferencia){
     let historialBD
-    let historialMovimiento={
+    let historialMovimientoSaliente={
+        tipoMovimiento:"",
+        fecha:"",
+        valorMovimiento:"",
+        idCuenta:""
+    }
+    let historialMovimientoEntrante={
         tipoMovimiento:"",
         fecha:"",
         valorMovimiento:"",
@@ -94,10 +100,15 @@ function guardarHistorial(transferencia){
         }else{
             historialBD=JSON.parse(localStorage.getItem("Historial"))
             }
-    historialMovimiento.tipoMovimiento = "Transferencia"
-    historialMovimiento.valorMovimiento = "-"+transferencia.valorTransferencia
-    historialMovimiento.fecha = new Date()
-    historialMovimiento.idCuenta = transferencia.cuentaEmisora
-    historialBD.push(historialMovimiento)
+    historialMovimientoSaliente.tipoMovimiento = "Transferencia"
+    historialMovimientoSaliente.valorMovimiento = "-"+transferencia.valorTransferencia
+    historialMovimientoSaliente.fecha = new Date()
+    historialMovimientoSaliente.idCuenta = transferencia.cuentaEmisora
+    historialBD.push(historialMovimientoSaliente)
+    historialMovimientoEntrante.tipoMovimiento = "Transferencia"
+    historialMovimientoEntrante.valorMovimiento = "+"+transferencia.valorTransferencia
+    historialMovimientoEntrante.fecha = new Date()
+    historialMovimientoEntrante.idCuenta = transferencia.cuentaReceptora
+    historialBD.push(historialMovimientoEntrante)
     localStorage.setItem('Historial', JSON.stringify(historialBD))
 }
