@@ -9,14 +9,13 @@ class Usuario {
     }
 }
 
-let numeroAsignado =1000000000
-function captarDatosLogin(usuario, numeroAsignado){
+function captarDatosLogin(usuario, ultimoNumeroCuenta){
     usuario.id = document.getElementById('idCliente').value
     usuario.nombre = document.getElementById('nombresCliente').value
     usuario.apellido = document.getElementById('apellidosCliente').value
     usuario.correo = document.getElementById('correoCLiente').value
     usuario.password = document.getElementById('passwordCLiente').value
-    usuario.numeroCuenta = asignadorNumeroCuenta(numeroAsignado)
+    usuario.numeroCuenta = ultimoNumeroCuenta
     return usuario
 }
 
@@ -49,16 +48,11 @@ function validarPasswords(usuario){
     }
 }
 
-function asignadorNumeroCuenta() {
-    numeroAsignado++
-    return numeroAsignado
-}
-
-
 function registro(){
     let usuario = new Usuario()
     let usuariosBD
     let cuentasBD
+    let ultimoNumeroCuenta
     if(localStorage.getItem("Usuario") == null){
         usuariosBD = []
         }else{
@@ -69,7 +63,14 @@ function registro(){
         }else{
             cuentasBD=JSON.parse(localStorage.getItem("Cuenta"))
             }
-    captarDatosLogin(usuario)
+    if(localStorage.getItem("ultimoNumeroCuenta") == null){
+        ultimoNumeroCuenta = 1000000000
+        }else{
+            ultimoNumeroCuenta=JSON.parse(localStorage.getItem("ultimoNumeroCuenta"))
+            ultimoNumeroCuenta++
+            }
+    localStorage.setItem('ultimoNumeroCuenta', ultimoNumeroCuenta.toString())
+    captarDatosLogin(usuario, ultimoNumeroCuenta)
     if(validacionCorreoExiste(usuariosBD, usuario)) {
         alert("Este correo electronico ya fue registrado.")
         }else if (validacionCedulaExiste(usuariosBD, usuario)) {
@@ -90,6 +91,7 @@ function registro(){
                             localStorage.setItem("Usuario", JSON.stringify(usuariosBD))
                             localStorage.setItem("Cuenta", JSON.stringify(cuentasBD))
                             alert("Usuario registrado exitosamente.")
+                            window.location.href = `/Html/LogIn.html`
                             }
 }
 

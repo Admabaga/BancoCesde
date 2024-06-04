@@ -1,0 +1,60 @@
+nav
+{
+    display: flex;
+    margin-left: 100px;
+}
+#Logo
+{
+    display: flex;
+    height: 100px;
+    width: auto;
+    margin-right: 150px;
+}
+#Titulo 
+{
+    display: flex;
+    height: 220px;
+    width: 1050px;
+    margin-top: 40px;
+    background-color: #C22E63;
+    color: white;
+    font-size: 120px;
+    border-radius: 20px;
+    
+}
+#Titulo h1
+{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 50px;
+    justify-content: center;
+}
+#Ajustes 
+{
+    display: flex;
+    height: 100px;
+    margin-left: 400px;
+    margin-top: 150px;
+}
+#Ajustes:hover
+{
+    display: flex;
+    height: 110px;
+    margin-left: 400px;
+    margin-top: 150px;
+}
+#Usuario 
+{
+    display: flex;
+    height: 150px;
+    margin-left: 100px;
+    margin-top: 120px;
+}
+
+#Usuario:hover 
+{
+    display: flex;
+    height: 160px;
+    margin-left: 100px;
+    margin-top: 120px;
+}

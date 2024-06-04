@@ -3,24 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear cuenta</title>
-</head>
+    <title>Crear Cuenta Banco cesde</title>
+    <link rel="stylesheet" href="/css/CrearCuenta.css">
+</head> 
 <body>
+    <nav>
+        <div id="Logo">
+        <a href="inicio.html"><img src="/img/Logo banco.png" alt=""></a>
+        </div>
+        <div id="Titulo">
+            <h1>Banco Cesde</h1>   
+        </div>        
+            <div id="Ajustes">
+                    <img src="" alt=""><img src="/img/Ajustes.png" alt="">
+            </div>
+            <div id="Usuario">
+            <img src="/img/usuario.png" alt="">
+            </div>
+    </nav>
+
+       <div class="h1">
+            <h1>Crear cuenta</h1>
+            <h1 id="Cesde">Banco Cesde</h1>
+        </div>
+
+    <div id="form">
     <form action="">
-        <input type="text" id="nombresCliente" placeholder="Ingresa tus nombres: ">
-        <br><br>
-        <input type="text" id="apellidosCliente" placeholder="Ingresa tus apellidos: ">
-        <br><br>
-        <input type="text" id="idCliente" placeholder="Ingresa numero de identificacion: ">
-        <br><br>
-        <input type="email" id="correoCLiente" placeholder="Ingresa tu correo electronico: ">
-        <br><br>
-        <input type="password" id="passwordCLiente" placeholder="Ingresa una contraseña: ">
-        <br><br>
-        <input type="password" id="passwordCLiente2" placeholder="Repite tu contraseña: ">
-        <br><br>
-        <input type="button" value="Registrarme" onclick="registro()">
-    </form>
+            <label for="">Nombres completos</label>
+            <input type="text" name="" id="nombresCliente" required  class="barra">
+            <label for="">Apellidos completos</label>
+            <input type="text" name="" id="apellidosCliente" required  class="barra">
+            <label for="">Numero identificacion</label>
+            <input type="text" name="" id="idCliente" required  class="barra">
+            <label for="">Ingresa correo electronico</label>
+            <input type="email" name="" id="correoCLiente" required  class="barra">
+            <label for="">Crear contraseña</label>
+            <input type="password" name="" id="passwordCLiente" required class="barra">
+            <label for="">Confirmar contraseña</label>
+            <input type="password" name="" id="passwordCLiente2" required  class="barra" >
+            <br><br><br>
+            <input type="button" id="boton"  value="Crear cuenta" onclick="registro()">
+
+        </form>
+    </div>
     <script src="/Js/RegistroCuenta.js"></script>
+        
 </body>
 </html>
