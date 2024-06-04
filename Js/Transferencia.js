@@ -101,12 +101,12 @@ function guardarHistorial(transferencia){
             historialBD=JSON.parse(localStorage.getItem("Historial"))
             }
     historialMovimientoSaliente.tipoMovimiento = "Transferencia"
-    historialMovimientoSaliente.valorMovimiento = "-"+transferencia.valorTransferencia
+    historialMovimientoSaliente.valorMovimiento = "- " + transferencia.valorTransferencia
     historialMovimientoSaliente.fecha = formatoHoraYFechaColombia()
     historialMovimientoSaliente.idCuenta = transferencia.cuentaEmisora
     historialBD.push(historialMovimientoSaliente)
     historialMovimientoEntrante.tipoMovimiento = "Transferencia"
-    historialMovimientoEntrante.valorMovimiento = "+"+transferencia.valorTransferencia
+    historialMovimientoEntrante.valorMovimiento = "+ " +transferencia.valorTransferencia
     historialMovimientoEntrante.fecha = formatoHoraYFechaColombia()
     historialMovimientoEntrante.idCuenta = transferencia.cuentaReceptora
     historialBD.push(historialMovimientoEntrante)
