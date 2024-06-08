@@ -26,7 +26,7 @@ function realizarTransferencia(){
         }else if(Number(transferencia.saldoActual) < Number(transferencia.valorTransferencia)){
                 alert("No tienes saldo suficiente para realizar la transferencia.")
                 }else{
-                    actualizarSaldosEnBd(cuentasBD, transferencia)
+                    actualizarSaldoEnBd(cuentasBD, transferencia)
                     guardarHistorial(transferencia)
                     document.getElementById('cuentaYSaldo').innerHTML = "Producto del que vas a transferir #: "+transferencia.cuentaEmisora+"<br>"+
                     "Tu saldo actual es: $"+transferencia.nuevoSaldo
@@ -62,7 +62,7 @@ function validarNumeroCuentaExiste(cuentasBD, transferencia){
             }
 }
 
-function actualizarSaldosEnBd(cuentasBD, transferencia){
+function actualizarSaldoEnBd(cuentasBD, transferencia){
     for(let i = 0; i< cuentasBD.length; i++){
         if(cuentasBD[i].numeroCuenta == transferencia.cuentaEmisora){
             cuentasBD[i].saldo = Number(transferencia.saldoActual) - Number(transferencia.valorTransferencia)
