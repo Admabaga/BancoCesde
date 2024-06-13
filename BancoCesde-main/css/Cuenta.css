@@ -1,0 +1,107 @@
+nav
+{
+    display: flex;
+    margin-left: 100px;
+}
+#Logo
+{
+    display: flex;
+    height: 100px;
+    width: auto;
+    margin-right: 150px;
+}
+#Titulo 
+{
+    display: flex;
+    height: 220px;
+    width: 1050px;
+    margin-top: 35px;
+    background-color: #C22E63;
+    color: white;
+    font-size: 120px;
+    border-radius: 20px;
+    
+}
+#Titulo h1
+{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 30px;
+    justify-content: center;
+}
+#Ajustes 
+{
+    display: flex;
+    height: 100px;
+    margin-left: 400px;
+    margin-top: 150px;
+}
+#Ajustes:hover
+{
+    display: flex;
+    height: 110px;
+    margin-left: 400px;
+    margin-top: 150px;
+}
+#Usuario 
+{
+    display: flex;
+    height: 150px;
+    margin-left: 100px;
+    margin-top: 120px;
+}
+
+#Usuario:hover 
+{
+    display: flex;
+    height: 160px;
+    margin-left: 100px;
+    margin-top: 120px;
+}
+#TResultado
+{
+    margin-left: 25%;
+    margin-top: 8%;
+    background-color: #C22E63;
+    color: white;
+    justify-content: center;
+    height: 75px;
+    width: 500px;
+    border-radius: 10px;
+    font-size: 50px;
+}
+form
+{
+    margin-left: 45%;
+    margin-top: 1%;
+
+}
+form input
+{
+    margin-top: 10px;
+    height: 40px;
+    width: 220px;
+    border-radius: 20px;
+    color: black;
+    background-color:white;
+    font-size: 25px;
+}
+form input:hover
+{
+    margin-top: 10px;
+    height: 43px;
+    width: 223px;
+    border-radius: 20px;
+    color: black;
+    background-color:white;
+    font-size: 28px;
+}
+#fondo 
+{
+    background-color: #C22E63;
+    height: 250px;
+    width: 800px;
+    margin-left: 40%;
+    justify-content: center;
+    border-radius: 100px;
+}
