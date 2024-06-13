@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/Trasferencia.css">
+    <title>Transferencia</title>
 </head>
 <body>
     <nav>
@@ -23,13 +24,14 @@
     
     
     <p id="cuentaYSaldo"></p>
-    <form action="">
+    <form action="" >
         <input type="text" name="" id="cuentaReceptora" placeholder="Para:">
         <br><br>
         <input type="text" name="" id="valorTransferencia" placeholder="Ingrese el valor: ">
         <br><br>
-        <input type="button" value="Transferir" onclick="realizarTransferencia()">
-        <input type="button" value="Atras" onclick="botonAtras()">
+        <input type="button" value="Transferir" class="boton" onclick="realizarTransferencia()">
+        <input type="button" value="Atras" 
+        class="boton" onclick="botonAtras()">
     </form>
     <p id="comprobanteTransferencia"></p>
     <script src="/Js/Transferencia.js"></script>

@@ -26,7 +26,7 @@ function realizarTransferencia(){
         }else if(Number(transferencia.saldoActual) < Number(transferencia.valorTransferencia)){
                 alert("No tienes saldo suficiente para realizar la transferencia.")
                 }else{
-                    actualizarSaldoEnBd(cuentasBD, transferencia)
+                    actualizarSaldosEnBd(cuentasBD, transferencia)
                     guardarHistorial(transferencia)
                     document.getElementById('cuentaYSaldo').innerHTML = "Producto del que vas a transferir #: "+transferencia.cuentaEmisora+"<br>"+
                     "Tu saldo actual es: $"+transferencia.nuevoSaldo
@@ -62,7 +62,7 @@ function validarNumeroCuentaExiste(cuentasBD, transferencia){
             }
 }
 
-function actualizarSaldoEnBd(cuentasBD, transferencia){
+function actualizarSaldosEnBd(cuentasBD, transferencia){
     for(let i = 0; i< cuentasBD.length; i++){
         if(cuentasBD[i].numeroCuenta == transferencia.cuentaEmisora){
             cuentasBD[i].saldo = Number(transferencia.saldoActual) - Number(transferencia.valorTransferencia)
@@ -83,13 +83,7 @@ function actualizarSaldoEnBd(cuentasBD, transferencia){
 
 function guardarHistorial(transferencia){
     let historialBD
-    let historialMovimientoSaliente={
-        tipoMovimiento:"",
-        fecha:"",
-        valorMovimiento:"",
-        idCuenta:""
-    }
-    let historialMovimientoEntrante={
+    let historialMovimiento={
         tipoMovimiento:"",
         fecha:"",
         valorMovimiento:"",
@@ -100,32 +94,10 @@ function guardarHistorial(transferencia){
         }else{
             historialBD=JSON.parse(localStorage.getItem("Historial"))
             }
-    historialMovimientoSaliente.tipoMovimiento = "Transferencia"
-    historialMovimientoSaliente.valorMovimiento = "- " + transferencia.valorTransferencia
-    historialMovimientoSaliente.fecha = formatoHoraYFechaColombia()
-    historialMovimientoSaliente.idCuenta = transferencia.cuentaEmisora
-    historialBD.push(historialMovimientoSaliente)
-    historialMovimientoEntrante.tipoMovimiento = "Transferencia"
-    historialMovimientoEntrante.valorMovimiento = "+ " +transferencia.valorTransferencia
-    historialMovimientoEntrante.fecha = formatoHoraYFechaColombia()
-    historialMovimientoEntrante.idCuenta = transferencia.cuentaReceptora
-    historialBD.push(historialMovimientoEntrante)
+    historialMovimiento.tipoMovimiento = "Transferencia"
+    historialMovimiento.valorMovimiento = "-"+transferencia.valorTransferencia
+    historialMovimiento.fecha = new Date()
+    historialMovimiento.idCuenta = transferencia.cuentaEmisora
+    historialBD.push(historialMovimiento)
     localStorage.setItem('Historial', JSON.stringify(historialBD))
-}
-
-function formatoHoraYFechaColombia(){
-    let fechaHoraCompletaColombia
-    let horaActualColombia = new Date().toLocaleString("es-CO", {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      })
-    let fechaActualColombia = new Date().toLocaleDateString("es-CO", {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-    })
-    fechaHoraCompletaColombia = `${horaActualColombia} ${fechaActualColombia}`;
-    return fechaHoraCompletaColombia
 }
