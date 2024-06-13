@@ -82,7 +82,7 @@ function actualizarSaldosEnBd(cuentasBD, transferencia){
 }
 
 function guardarHistorial(transferencia){
-    let historialBD
+    let historialBD= JSON.parse(localStorage.getItem("Historial"))
     let historialMovimientoSaliente={
         tipoMovimiento:"",
         fecha:"",
@@ -95,11 +95,7 @@ function guardarHistorial(transferencia){
         valorMovimiento:"",
         idCuenta:""
     }
-    if(localStorage.getItem("Historial") == null){
-        historialBD = []
-        }else{
-            historialBD=JSON.parse(localStorage.getItem("Historial"))
-            }
+    
             historialMovimientoSaliente.tipoMovimiento = "Transferencia"
             historialMovimientoSaliente.valorMovimiento = "- " + transferencia.valorTransferencia
             historialMovimientoSaliente.fecha = formatoHoraYFechaColombia()
@@ -110,7 +106,7 @@ function guardarHistorial(transferencia){
             historialMovimientoEntrante.fecha = formatoHoraYFechaColombia()
             historialMovimientoEntrante.idCuenta = transferencia.cuentaReceptora
             historialBD.push(historialMovimientoEntrante)
-    localStorage.setItem('Historial', JSON.stringify(historialBD))
+            localStorage.setItem('Historial', JSON.stringify(historialBD))
 }
 
 function formatoHoraYFechaColombia(){
