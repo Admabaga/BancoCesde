@@ -31,21 +31,18 @@ function seleccionarHistorialPorId(historialBD, numeroCuenta){
 }
 
 function traerDatosHistorial(numeroCuenta){ 
-    let historialBD = JSON.parse(localStorage.getItem("Historial"))
-    let listaHistoriales = seleccionarHistorialPorId(historialBD, numeroCuenta)
-    console.log(listaHistoriales)
+    let historialBD = JSON.parse(localStorage.getItem('Historial'))
+    let historialFiltrado = historialBD.filter(movimiento => movimiento.idCuenta == numeroCuenta)
     
-    let html=""
-    for(let i =0; i<listaHistoriales.length;i++){
-        html += "<tr>"
-        html += "<td>" + listaHistoriales[i].tipoMovimiento +"</td>"
-        html += "<td>" + listaHistoriales[i].valorMovimiento +"</td>"
-        html += "<td>" + listaHistoriales[i].fecha +"</td>"
-        html += "</tr>"
-    }
-    document.querySelector("#tabla tbody").innerHTML = html
+    let tablaMovimientos = document.getElementById('tablaMovimientos')
+    let contenidoTabla = '<thead><tr><th>Tipo movimiento</th><th>Valor</th><th>Fecha</th></tr></thead><tbody>'
+    historialFiltrado.forEach(movimiento => {
+        contenidoTabla += `<tr><td>${movimiento.tipoMovimiento}</td><td>${movimiento.valorMovimiento}</td><td>${movimiento.fecha}</td></tr>`
+    });
+    contenidoTabla += '</tbody>'
+    tablaMovimientos.innerHTML = contenidoTabla
 }
 
-window.onload = function(numeroCuenta) {
+window.onload = function() {
     traerDatosHistorial(numeroCuenta)
 };

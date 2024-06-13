@@ -83,7 +83,13 @@ function actualizarSaldosEnBd(cuentasBD, transferencia){
 
 function guardarHistorial(transferencia){
     let historialBD
-    let historialMovimiento={
+    let historialMovimientoSaliente={
+        tipoMovimiento:"",
+        fecha:"",
+        valorMovimiento:"",
+        idCuenta:""
+    }
+    let historialMovimientoEntrante={
         tipoMovimiento:"",
         fecha:"",
         valorMovimiento:"",
@@ -94,10 +100,32 @@ function guardarHistorial(transferencia){
         }else{
             historialBD=JSON.parse(localStorage.getItem("Historial"))
             }
-    historialMovimiento.tipoMovimiento = "Transferencia"
-    historialMovimiento.valorMovimiento = "-"+transferencia.valorTransferencia
-    historialMovimiento.fecha = new Date()
-    historialMovimiento.idCuenta = transferencia.cuentaEmisora
-    historialBD.push(historialMovimiento)
+            historialMovimientoSaliente.tipoMovimiento = "Transferencia"
+            historialMovimientoSaliente.valorMovimiento = "- " + transferencia.valorTransferencia
+            historialMovimientoSaliente.fecha = formatoHoraYFechaColombia()
+            historialMovimientoSaliente.idCuenta = transferencia.cuentaEmisora
+            historialBD.push(historialMovimientoSaliente)
+            historialMovimientoEntrante.tipoMovimiento = "Transferencia"
+            historialMovimientoEntrante.valorMovimiento = "+ " +transferencia.valorTransferencia
+            historialMovimientoEntrante.fecha = formatoHoraYFechaColombia()
+            historialMovimientoEntrante.idCuenta = transferencia.cuentaReceptora
+            historialBD.push(historialMovimientoEntrante)
     localStorage.setItem('Historial', JSON.stringify(historialBD))
+}
+
+function formatoHoraYFechaColombia(){
+    let fechaHoraCompletaColombia
+    let horaActualColombia = new Date().toLocaleString("es-CO", {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      })
+    let fechaActualColombia = new Date().toLocaleDateString("es-CO", {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+    })
+    fechaHoraCompletaColombia = `${horaActualColombia} ${fechaActualColombia}`;
+    return fechaHoraCompletaColombia
 }
