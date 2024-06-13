@@ -6,16 +6,16 @@ nav
 #Logo
 {
     display: flex;
-    height: 100px;
+    height: 300px;
     width: auto;
-    margin-right: 150px;
+    margin-right: 70px;
 }
 #Titulo 
 {
     display: flex;
     height: 220px;
     width: 1050px;
-    margin-top: 35px;
+    margin-top: 40px;
     background-color: #C22E63;
     color: white;
     font-size: 120px;
@@ -26,7 +26,7 @@ nav
 {
     display: flex;
     margin-top: 10px;
-    margin-left: 30px;
+    margin-left: 50px;
     justify-content: center;
 }
 #Ajustes 
@@ -58,50 +58,54 @@ nav
     margin-left: 100px;
     margin-top: 120px;
 }
-#TResultado
+#cuentaYSaldo
 {
-    margin-left: 25%;
-    margin-top: 8%;
+    margin-top: 5%;
+    margin-left: 35%;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #C22E63;
     color: white;
+    border-radius: 20px;
+    height: 150px;
+    width: 1000px;
     justify-content: center;
-    height: 75px;
-    width: 500px;
-    border-radius: 10px;
-    font-size: 50px;
+    
 }
 form
 {
-    margin-left: 45%;
-    margin-top: 1%;
-
+    margin-left: 42%;
+    background-color: #C22E63;
+    height: 450px;
+    width: 620px;
+    border-radius: 80px;
+    
 }
 form input
 {
-    margin-top: 10px;
-    height: 40px;
-    width: 220px;
+    margin-top: 70px;
+    margin-left: 60px;
+    height: 50px;
+    width: 500px;
     border-radius: 20px;
-    color: black;
-    background-color:white;
     font-size: 25px;
+    
 }
-form input:hover
+.boton
 {
-    margin-top: 10px;
-    height: 43px;
-    width: 223px;
-    border-radius: 20px;
-    color: black;
-    background-color:white;
-    font-size: 28px;
+    height: 50px;
+    width: 110px;
+    font-size: 20px;
+    border-radius: 50px;
+    color: #C22E63;
+    background-color: white;
 }
-#fondo 
+.boton:hover
 {
-    background-color: #C22E63;
-    height: 250px;
-    width: 800px;
-    margin-left: 40%;
-    justify-content: center;
-    border-radius: 100px;
+    height: 53px;
+    width: 113px;
+    font-size: 23px;
+    border-radius: 50px;
+    color: #C22E63;
+    background-color: white;
 }

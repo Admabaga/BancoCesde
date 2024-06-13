@@ -9,13 +9,14 @@ class Usuario {
     }
 }
 
-function captarDatosLogin(usuario, ultimoNumeroCuenta){
+let numeroAsignado =1000000000
+function captarDatosLogin(usuario, numeroAsignado){
     usuario.id = document.getElementById('idCliente').value
     usuario.nombre = document.getElementById('nombresCliente').value
     usuario.apellido = document.getElementById('apellidosCliente').value
     usuario.correo = document.getElementById('correoCLiente').value
     usuario.password = document.getElementById('passwordCLiente').value
-    usuario.numeroCuenta = ultimoNumeroCuenta
+    usuario.numeroCuenta = asignadorNumeroCuenta(numeroAsignado)
     return usuario
 }
 
@@ -47,28 +48,17 @@ function validarPasswords(usuario){
         return passwordCorrecta
     }
 }
-function formatoHoraYFechaColombia(){
-    let fechaHoraCompletaColombia
-    let horaActualColombia = new Date().toLocaleString("es-CO", {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      })
-    let fechaActualColombia = new Date().toLocaleDateString("es-CO", {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-    })
-    fechaHoraCompletaColombia = `${horaActualColombia} ${fechaActualColombia}`;
-    return fechaHoraCompletaColombia
+
+function asignadorNumeroCuenta() {
+    numeroAsignado++
+    return numeroAsignado
 }
+
 
 function registro(){
     let usuario = new Usuario()
     let usuariosBD
     let cuentasBD
-    let ultimoNumeroCuenta
     if(localStorage.getItem("Usuario") == null){
         usuariosBD = []
         }else{
@@ -79,19 +69,7 @@ function registro(){
         }else{
             cuentasBD=JSON.parse(localStorage.getItem("Cuenta"))
             }
-    if(localStorage.getItem("ultimoNumeroCuenta") == null){
-        ultimoNumeroCuenta = 1000000000
-        }else{
-            ultimoNumeroCuenta=JSON.parse(localStorage.getItem("ultimoNumeroCuenta"))
-            ultimoNumeroCuenta++
-            }
-    if(localStorage.getItem("Historial") == null){
-        historialBD = []
-        }else{
-            historialBD=JSON.parse(localStorage.getItem("Historial"))
-            }
-    localStorage.setItem('ultimoNumeroCuenta', ultimoNumeroCuenta.toString())
-    captarDatosLogin(usuario, ultimoNumeroCuenta)
+    captarDatosLogin(usuario)
     if(validacionCorreoExiste(usuariosBD, usuario)) {
         alert("Este correo electronico ya fue registrado.")
         }else if (validacionCedulaExiste(usuariosBD, usuario)) {
@@ -104,27 +82,14 @@ function registro(){
                                 saldo:"",
                                 estado:""
                             }
-                            let historialMovimiento={
-                                tipoMovimiento:"",
-                                fecha:"",
-                                valorMovimiento:"",
-                                idCuenta:""
-                            }
                             cuenta.numeroCuenta = usuario.numeroCuenta
                             cuenta.saldo = 200000
                             cuenta.estado = "Activa"
-                            historialMovimiento.tipoMovimiento = "Saldo apertura cuenta"
-                            historialMovimiento.valorMovimiento = "+ " +cuenta.saldo
-                            historialMovimiento.fecha = formatoHoraYFechaColombia()
-                            historialMovimiento.idCuenta = cuenta.numeroCuenta
                             cuentasBD.push(cuenta)
                             usuariosBD.push(usuario)
-                            historialBD.push(historialMovimiento)
                             localStorage.setItem("Usuario", JSON.stringify(usuariosBD))
                             localStorage.setItem("Cuenta", JSON.stringify(cuentasBD))
-                            localStorage.setItem('Historial', JSON.stringify(historialBD))
                             alert("Usuario registrado exitosamente.")
-                            window.location.href = `/Html/LogIn.html`
                             }
 }
 

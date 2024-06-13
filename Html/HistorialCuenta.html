@@ -21,20 +21,24 @@
         <img src="/img/usuario.png" alt="">
             </div>
     </nav>
-    <style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-    </style>
-    <table id="tablaMovimientos"></table>
+
+    <div id="HistorialCuenta">
+        <h1>Historial</h1><h1 id="blanco"> de cuenta</h1>
+    </div>
+    <table border="" id="tablaHistorial">
+        <thead>
+            <tr>
+                <th>Tipo movimiento </th>
+                <th>Valor movimiento </th>
+                <th>Fecha </th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
     <br><br>
-    <input type="button" value="Atras" onclick="botonAtras()">
+    <input type="button" id="botonatras" value="Atras" onclick="botonAtras()">
     <script src="/Js/HistorialCuenta.js"></script>
 </body>
 </html>

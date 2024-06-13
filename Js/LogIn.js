@@ -43,7 +43,7 @@ function iniciarSesion(){
     if (validarUsuarioLogin(login, usuariosBD, validadorUsuario)) {
         let cuentaUsuario = traerDatosCuenta(validadorUsuario, cuentasBD)
         window.location.href = `/Html/Cuenta.html?saldo=${cuentaUsuario.saldo}&estado=${cuentaUsuario.estado}&numeroCuenta=${cuentaUsuario.numeroCuenta}`
-   
+       // alert(cuentaUsuario.numeroCuenta+"\n"+cuentaUsuario.saldo+"\n"+cuentaUsuario.estado)
         } else {
                 alert("Usuario o contraseña incorrectos.")
                 }
