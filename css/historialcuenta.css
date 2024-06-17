@@ -82,15 +82,15 @@ nav
 {
     color: white;
 }
-#tablaHistorial
+#tablaMovimientos
 {
     margin-top: 3%;
     margin-left: 38%;
     height: 80px;
-    width: 600px;
+    width: 800px;
     font-size: 30px;
     background-color:white;
-    color:#C22E63;
+    color:#570b26;
 }
 #botonatras
 {
