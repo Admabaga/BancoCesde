@@ -1,0 +1,85 @@
+nav
+{
+    display: flex;
+    margin-left: auto;
+}
+#Logo
+{
+    display: flex;
+    height: 100px;
+    width: auto;
+    margin-right: 140px;
+}
+#Titulo 
+{
+    display: flex;
+    height: 220px;
+    width: 1050px;
+    margin-top: 100px;
+    background-color: #C22E63;
+    color: white;
+    font-size: 120px;
+    border-radius: 50px;
+    
+}
+#Titulo h1
+{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 50px;
+    justify-content: center;
+}
+#Ajustes 
+{
+    display: flex;
+    height: 100px;
+    margin-left: 80px;
+    margin-top: 150px;
+}
+#Ajustes:hover
+{
+    display: flex;
+    height: 110px;
+    margin-left: 80px;
+    margin-top: 150px;
+}
+#Usuario 
+{
+    display: flex;
+    height: 165px;
+    margin-left: 80px;
+    margin-top: 120px;
+}
+
+#Usuario:hover 
+{
+    display: flex;
+    height: 169px;
+    margin-left: 80px;
+    margin-top: 120px;
+    justify-content: center;
+}
+form 
+{
+    margin-left: 1100px;
+    margin-top: 60px;
+}
+form input 
+{
+    height: 50px;
+    width: 100px;
+    border-radius: 50px;
+}
+#valorARecargar
+{
+    height: 80px;
+    width: 300px;
+}
+#Recarga 
+{
+    display: flex;
+    justify-content: center;
+    color: #C22E63;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
